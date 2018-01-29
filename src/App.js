@@ -17,11 +17,12 @@ class App extends Component {
       fontFamily: 'monospace',
       allowEdit: 'true'
     }
-
+//Binding all of our methods
     this.updateColor = this.updateColor.bind(this);
     this.updateSize = this.updateSize.bind(this);
     this.updateFamily = this.updateFamily.bind(this);
     this.updateEditStatus = this.updateEditStatus.bind(this);
+    
   }
 
   // updateColor
@@ -46,14 +47,14 @@ class App extends Component {
 
   
 
-
+//rendering all of our components with update props and allowEdit props passed in. Allow edit required this.state because it is in the initial state. 
   render() {
     return <div>
-        <div className="headerBar">
+        <div className="headerBar">        
           <EditToggle update={this.updateEditStatus} />
-          <ColorChanger update={this.updateColor} allowEdit={this.allowEdit} />
-          <SizeChanger update={this.updateSize} allowEdit={this.allowEdit} />
-          <FamilyChanger update={this.updateFamily} allowEdit={this.allowEdit} />
+          <ColorChanger update={this.updateColor} allowEdit={this.state.allowEdit} />
+          <SizeChanger update={this.updateSize} allowEdit={this.state.allowEdit} />
+          <FamilyChanger update={this.updateFamily} allowEdit={this.state.allowEdit} />
         </div>
         <div className="textArea"><TextContainer fontColor = {this.state.fontColor} fontSize = {this.state.fontSize} fontFamily = {this.state.fontFamily} /></div>
       </div>;
